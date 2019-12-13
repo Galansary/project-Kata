@@ -1,0 +1,985 @@
+{
+	"@timestamp" : 1576174156199,
+	"env" : {
+		"RuntimeVersion": "1.10.0-alpha1",
+		"RuntimeCommit": "",
+		"RuntimeConfig": "/usr/share/defaults/kata-containers/configuration.toml",
+		"Hypervisor": "/usr/bin/qemu-vanilla-system-x86_64",
+		"HypervisorVersion": "  QEMU emulator version 4.1.0\nCopyright (c) 2003-2019 Fabrice Bellard and the QEMU Project developers",
+		"Proxy": "/usr/libexec/kata-containers/kata-proxy",
+		"ProxyVersion": "1.10.0-alpha1-3b405f7",
+		"Shim": "/usr/libexec/kata-containers/kata-shim",
+		"ShimVersion": "  kata-shim version 1.10.0-alpha1-54f93db",
+		"machinename": "Ubuntu-Kata"
+	},
+	"date" : {
+		"ns": 1576174156208776553,
+		"Date": "2019-12-12T18:09:16.217"
+	},
+	"test" : {
+		"runtime": "kata-runtime",
+		"testname": "footprint-busybox"
+	},
+	"kata-env" :
+	{
+  "Meta": {
+    "Version": "1.0.23"
+  },
+  "Runtime": {
+    "Version": {
+      "Semver": "1.10.0-alpha1",
+      "Commit": "",
+      "OCI": "1.0.1-dev"
+    },
+    "Config": {
+      "Path": "/usr/share/defaults/kata-containers/configuration.toml"
+    },
+    "Debug": false,
+    "Trace": false,
+    "DisableGuestSeccomp": true,
+    "DisableNewNetNs": false,
+    "SandboxCgroupOnly": false,
+    "Experimental": null,
+    "Path": "/usr/bin/kata-runtime"
+  },
+  "Hypervisor": {
+    "MachineType": "pc",
+    "Version": "QEMU emulator version 4.1.0\nCopyright (c) 2003-2019 Fabrice Bellard and the QEMU Project developers",
+    "Path": "/usr/bin/qemu-vanilla-system-x86_64",
+    "BlockDeviceDriver": "virtio-scsi",
+    "EntropySource": "/dev/urandom",
+    "Msize9p": 8192,
+    "MemorySlots": 10,
+    "Debug": false,
+    "UseVSock": false,
+    "SharedFS": "virtio-9p"
+  },
+  "Image": {
+    "Path": "/usr/share/kata-containers/kata-containers-image_clearlinux_1.10.0-alpha1_agent_c87f497312.img"
+  },
+  "Kernel": {
+    "Path": "/usr/share/kata-containers/vmlinuz-4.19.75.55-44.container",
+    "Parameters": "systemd.unit=kata-containers.target systemd.mask=systemd-networkd.service systemd.mask=systemd-networkd.socket"
+  },
+  "Initrd": {
+    "Path": ""
+  },
+  "Proxy": {
+    "Type": "kataProxy",
+    "Version": "kata-proxy version 1.10.0-alpha1-3b405f7",
+    "Path": "/usr/libexec/kata-containers/kata-proxy",
+    "Debug": false
+  },
+  "Shim": {
+    "Type": "kataShim",
+    "Version": "kata-shim version 1.10.0-alpha1-54f93db",
+    "Path": "/usr/libexec/kata-containers/kata-shim",
+    "Debug": false
+  },
+  "Agent": {
+    "Type": "kata",
+    "Debug": false,
+    "Trace": false,
+    "TraceMode": "",
+    "TraceType": ""
+  },
+  "Host": {
+    "Kernel": "5.0.0-1027-azure",
+    "Architecture": "amd64",
+    "Distro": {
+      "Name": "Ubuntu",
+      "Version": "18.04"
+    },
+    "CPU": {
+      "Vendor": "GenuineIntel",
+      "Model": "Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz"
+    },
+    "VMContainerCapable": true,
+    "SupportVSocks": true
+  },
+  "Netmon": {
+    "Version": "kata-netmon version 1.10.0-alpha1",
+    "Path": "/usr/libexec/kata-containers/kata-netmon",
+    "Debug": false,
+    "Enable": false
+  }
+},
+"footprint-busybox" : {
+	"Config": [
+			{
+		"testname": "footprint-busybox",
+		"payload": "busybox",
+		"payload_args": "tail -f /dev/null",
+		"payload_runtime_args": " -m 2G",
+		"payload_sleep": 10,
+		"max_containers": 20,
+		"max_memory_consumed": "6*1024*1024*1024",
+		"min_memory_free": "2*1024*1024*1024",
+		"dockerd_path": "/usr/bin/dockerd",
+		"dump_caches": "1"
+	}
+	],
+	"Results": [
+			{
+				"uss": {
+			"proxy": 10375168,
+			"shim": 22781952,
+			"qemu": "218365952",
+			"total": 251523072,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 10387456,
+			"shim": 22795264,
+			"qemu": "218431488",
+			"total": 251614208,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 957915136,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 115494912,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 955523072,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 7087788032,
+			"avail_decr": 169328640,
+			"cached": 386678784,
+			"smem_free": 6950154240,
+			"free_decr": 5120745472,
+			"anon": 632418304,
+			"mapped": 314920960,
+			"meminfo_cached": 325001216,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 167550976,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 16048128,
+			"shim": 26107904,
+			"qemu": "361250816",
+			"total": 403406848,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 18430976,
+			"shim": 35832832,
+			"qemu": "397947904",
+			"total": 452211712,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 1165556736,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 115506176,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 1163112448,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 6849613824,
+			"avail_decr": 407502848,
+			"cached": 385232896,
+			"smem_free": 6710231040,
+			"free_decr": 4913156096,
+			"anon": 839716864,
+			"mapped": 315207680,
+			"meminfo_cached": 323510272,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 175190016,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 24084480,
+			"shim": 37019648,
+			"qemu": "540684288",
+			"total": 601788416,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 26484736,
+			"shim": 46773248,
+			"qemu": "577585152",
+			"total": 650843136,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 1373504512,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 115813376,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 1371242496,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 6609674240,
+			"avail_decr": 647442432,
+			"cached": 385241088,
+			"smem_free": 6468145152,
+			"free_decr": 4705026048,
+			"anon": 1047334912,
+			"mapped": 315547648,
+			"meminfo_cached": 323829760,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 184107008,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 32059392,
+			"shim": 49967104,
+			"qemu": "718155776",
+			"total": 800182272,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 34508800,
+			"shim": 59787264,
+			"qemu": "755109888",
+			"total": 849405952,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 1581154304,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 115812352,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 1578967040,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 6368423936,
+			"avail_decr": 888692736,
+			"cached": 386670592,
+			"smem_free": 6222516224,
+			"free_decr": 4497301504,
+			"anon": 1254891520,
+			"mapped": 316006400,
+			"meminfo_cached": 324485120,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 193441792,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 40075264,
+			"shim": 63000576,
+			"qemu": "901926912",
+			"total": 1005002752,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 42524672,
+			"shim": 72848384,
+			"qemu": "938909696",
+			"total": 1054282752,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 1791505408,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 115832832,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 1788862464,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 6121156608,
+			"avail_decr": 1135960064,
+			"cached": 388730880,
+			"smem_free": 5971324928,
+			"free_decr": 4287406080,
+			"anon": 1464647680,
+			"mapped": 316440576,
+			"meminfo_cached": 325210112,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 202801152,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 48091136,
+			"shim": 75952128,
+			"qemu": "1077477376",
+			"total": 1201520640,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 50552832,
+			"shim": 85806080,
+			"qemu": "1114496000",
+			"total": 1250854912,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 1997043712,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 116041728,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 1994862592,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 5881880576,
+			"avail_decr": 1375236096,
+			"cached": 388345856,
+			"smem_free": 5730635776,
+			"free_decr": 4081405952,
+			"anon": 1670352896,
+			"mapped": 316534784,
+			"meminfo_cached": 325312512,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 212443136,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 56139776,
+			"shim": 88993792,
+			"qemu": "1263357952",
+			"total": 1408491520,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 58612736,
+			"shim": 98860032,
+			"qemu": "1300460544",
+			"total": 1457933312,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 2212107264,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 116396032,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 2209992704,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 5631041536,
+			"avail_decr": 1626075136,
+			"cached": 390070272,
+			"smem_free": 5475557376,
+			"free_decr": 3866275840,
+			"anon": 1884737536,
+			"mapped": 316829696,
+			"meminfo_cached": 325824512,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 222228480,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 64143360,
+			"shim": 99930112,
+			"qemu": "1440862208",
+			"total": 1604935680,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 66621440,
+			"shim": 109801472,
+			"qemu": "1478010880",
+			"total": 1654433792,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 2415826944,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 116427776,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 2413572096,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 5391962112,
+			"avail_decr": 1865154560,
+			"cached": 389992448,
+			"smem_free": 5234388992,
+			"free_decr": 3662696448,
+			"anon": 2088357888,
+			"mapped": 317161472,
+			"meminfo_cached": 325980160,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 231800832,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 72159232,
+			"shim": 112988160,
+			"qemu": "1620262912",
+			"total": 1805410304,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 74644480,
+			"shim": 122867712,
+			"qemu": "1657434112",
+			"total": 1854946304,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 2625775616,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 116599808,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 2623606784,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 5146263552,
+			"avail_decr": 2110853120,
+			"cached": 391204864,
+			"smem_free": 4985282560,
+			"free_decr": 3452661760,
+			"anon": 2298236928,
+			"mapped": 317235200,
+			"meminfo_cached": 326316032,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 241119232,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 78094336,
+			"shim": 125956096,
+			"qemu": "1799700480",
+			"total": 2003750912,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 80573440,
+			"shim": 135855104,
+			"qemu": "1836891136",
+			"total": 2053319680,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 2831806464,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 116907008,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 2829463552,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 4904738816,
+			"avail_decr": 2352377856,
+			"cached": 391643136,
+			"smem_free": 4740947968,
+			"free_decr": 3246804992,
+			"anon": 2503979008,
+			"mapped": 317526016,
+			"meminfo_cached": 326782976,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 251006976,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 84021248,
+			"shim": 138985472,
+			"qemu": "1979105280",
+			"total": 2202112000,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 86524928,
+			"shim": 148897792,
+			"qemu": "2016313344",
+			"total": 2251736064,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 3037637632,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 116972544,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 3035353088,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 4661227520,
+			"avail_decr": 2595889152,
+			"cached": 393150464,
+			"smem_free": 4494225408,
+			"free_decr": 3040915456,
+			"anon": 2709491712,
+			"mapped": 318181376,
+			"meminfo_cached": 327184384,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 260804608,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 92041216,
+			"shim": 149872640,
+			"qemu": "2158600192",
+			"total": 2400514048,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 94539776,
+			"shim": 159805440,
+			"qemu": "2195830784",
+			"total": 2450176000,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 3244719104,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 116581376,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 3242844160,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 4419063808,
+			"avail_decr": 2838052864,
+			"cached": 394194944,
+			"smem_free": 4248260608,
+			"free_decr": 2833424384,
+			"anon": 2916532224,
+			"mapped": 318373888,
+			"meminfo_cached": 327536640,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 270581760,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 98000896,
+			"shim": 162824192,
+			"qemu": "2338250752",
+			"total": 2599075840,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 100509696,
+			"shim": 172760064,
+			"qemu": "2375489536",
+			"total": 2648759296,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 3450959872,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 116590592,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 3448766464,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 4177518592,
+			"avail_decr": 3079598080,
+			"cached": 394948608,
+			"smem_free": 4004016128,
+			"free_decr": 2627502080,
+			"anon": 3122262016,
+			"mapped": 318124032,
+			"meminfo_cached": 327811072,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 280264704,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 106024960,
+			"shim": 175849472,
+			"qemu": "2511384576",
+			"total": 2793259008,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 108548096,
+			"shim": 185789440,
+			"qemu": "2548667392",
+			"total": 2843004928,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 3652510720,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 116701184,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 3650396160,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 3940519936,
+			"avail_decr": 3316596736,
+			"cached": 395362304,
+			"smem_free": 3764326400,
+			"free_decr": 2425872384,
+			"anon": 3323736064,
+			"mapped": 318394368,
+			"meminfo_cached": 328028160,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 289685504,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 114057216,
+			"shim": 188899328,
+			"qemu": "2690830336",
+			"total": 2993786880,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 116572160,
+			"shim": 198846464,
+			"qemu": "2728139776",
+			"total": 3043558400,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 3860795392,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 117087232,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 3860639744,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 3692351488,
+			"avail_decr": 3564765184,
+			"cached": 401035264,
+			"smem_free": 3503681536,
+			"free_decr": 2215628800,
+			"anon": 3537420288,
+			"mapped": 319143936,
+			"meminfo_cached": 332840960,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 301191168,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 119984128,
+			"shim": 201908224,
+			"qemu": "2870218752",
+			"total": 3192111104,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 122510336,
+			"shim": 211862528,
+			"qemu": "2907566080",
+			"total": 3241938944,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 4066434048,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 117134336,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 4064137216,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 3454472192,
+			"avail_decr": 3802644480,
+			"cached": 396189696,
+			"smem_free": 3272212480,
+			"free_decr": 2012131328,
+			"anon": 3737104384,
+			"mapped": 318967808,
+			"meminfo_cached": 329101312,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 309297152,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 128012288,
+			"shim": 217059328,
+			"qemu": "3049836544",
+			"total": 3394908160,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 130549760,
+			"shim": 227019776,
+			"qemu": "3087181824",
+			"total": 3444751360,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 4276687872,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 117146624,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 4274253824,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 3209117696,
+			"avail_decr": 4047998976,
+			"cached": 397692928,
+			"smem_free": 3023163392,
+			"free_decr": 1802014720,
+			"anon": 3946930176,
+			"mapped": 319180800,
+			"meminfo_cached": 328912896,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 319275008,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 133943296,
+			"shim": 230035456,
+			"qemu": "3229528064",
+			"total": 3593506816,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 136487936,
+			"shim": 240006144,
+			"qemu": "3266913280",
+			"total": 3643407360,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 4482519040,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 117150720,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 4480249856,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 2967785472,
+			"avail_decr": 4289331200,
+			"cached": 398225408,
+			"smem_free": 2779574272,
+			"free_decr": 1596018688,
+			"anon": 4152590336,
+			"mapped": 319479808,
+			"meminfo_cached": 329306112,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 328617984,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 141979648,
+			"shim": 243023872,
+			"qemu": "3411501056",
+			"total": 3796504576,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 144516096,
+			"shim": 252995584,
+			"qemu": "3448884224",
+			"total": 3846395904,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 4692608000,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 117101568,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 4690685952,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 2722287616,
+			"avail_decr": 4534829056,
+			"cached": 398589952,
+			"smem_free": 2530795520,
+			"free_decr": 1385582592,
+			"anon": 4362743808,
+			"mapped": 320143360,
+			"meminfo_cached": 329474048,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 338358272,
+			"Units": "KB"
+		}
+	},
+	{
+				"uss": {
+			"proxy": 149999616,
+			"shim": 253890560,
+			"qemu": "3572203520",
+			"total": 3976093696,
+			"Units": "KB"
+		},
+		"pss": {
+			"proxy": 152516608,
+			"shim": 263859200,
+			"qemu": "3609620480",
+			"total": 4025996288,
+			"Units": "KB"
+		},
+		"all_pss": {
+			"pss": 4879653888,
+			"Units": "KB"
+		},
+		"dockerd": {
+			"pss": 117179392,
+			"Units": "KB"
+		},
+		"user_smem": {
+			"userspace": 4877520896,
+			"Units": "KB"
+		},
+		"system": {
+			"avail": 2500050944,
+			"avail_decr": 4757065728,
+			"cached": 400105472,
+			"smem_free": 2304569344,
+			"free_decr": 1198747648,
+			"anon": 4549464064,
+			"mapped": 319877120,
+			"meminfo_cached": 330141696,
+			"Units": "KB"
+		},
+		"slab": {
+			"slab": 347918336,
+			"Units": "KB"
+		}
+	}
+	]
+	}
+}

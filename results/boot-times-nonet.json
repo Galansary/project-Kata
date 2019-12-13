@@ -1,0 +1,331 @@
+{
+	"@timestamp" : 1576248829023,
+	"env" : {
+		"RuntimeVersion": "1.10.0-alpha1",
+		"RuntimeCommit": "",
+		"RuntimeConfig": "/usr/share/defaults/kata-containers/configuration.toml",
+		"Hypervisor": "/usr/bin/qemu-vanilla-system-x86_64",
+		"HypervisorVersion": "  QEMU emulator version 4.1.0\nCopyright (c) 2003-2019 Fabrice Bellard and the QEMU Project developers",
+		"Proxy": "/usr/libexec/kata-containers/kata-proxy",
+		"ProxyVersion": "1.10.0-alpha1-3b405f7",
+		"Shim": "/usr/libexec/kata-containers/kata-shim",
+		"ShimVersion": "  kata-shim version 1.10.0-alpha1-54f93db",
+		"machinename": "Ubuntu-Kata"
+	},
+	"date" : {
+		"ns": 1576248829031665906,
+		"Date": "2019-12-13T14:53:49.040"
+	},
+	"test" : {
+		"runtime": "kata-runtime",
+		"testname": "boot times nonet"
+	},
+	"kata-env" :
+	{
+  "Meta": {
+    "Version": "1.0.23"
+  },
+  "Runtime": {
+    "Version": {
+      "Semver": "1.10.0-alpha1",
+      "Commit": "",
+      "OCI": "1.0.1-dev"
+    },
+    "Config": {
+      "Path": "/usr/share/defaults/kata-containers/configuration.toml"
+    },
+    "Debug": false,
+    "Trace": false,
+    "DisableGuestSeccomp": true,
+    "DisableNewNetNs": false,
+    "SandboxCgroupOnly": false,
+    "Experimental": null,
+    "Path": "/usr/bin/kata-runtime"
+  },
+  "Hypervisor": {
+    "MachineType": "pc",
+    "Version": "QEMU emulator version 4.1.0\nCopyright (c) 2003-2019 Fabrice Bellard and the QEMU Project developers",
+    "Path": "/usr/bin/qemu-vanilla-system-x86_64",
+    "BlockDeviceDriver": "virtio-scsi",
+    "EntropySource": "/dev/urandom",
+    "Msize9p": 8192,
+    "MemorySlots": 10,
+    "Debug": false,
+    "UseVSock": false,
+    "SharedFS": "virtio-9p"
+  },
+  "Image": {
+    "Path": "/usr/share/kata-containers/kata-containers-image_clearlinux_1.10.0-alpha1_agent_c87f497312.img"
+  },
+  "Kernel": {
+    "Path": "/usr/share/kata-containers/vmlinuz-4.19.75.55-44.container",
+    "Parameters": "systemd.unit=kata-containers.target systemd.mask=systemd-networkd.service systemd.mask=systemd-networkd.socket"
+  },
+  "Initrd": {
+    "Path": ""
+  },
+  "Proxy": {
+    "Type": "kataProxy",
+    "Version": "kata-proxy version 1.10.0-alpha1-3b405f7",
+    "Path": "/usr/libexec/kata-containers/kata-proxy",
+    "Debug": false
+  },
+  "Shim": {
+    "Type": "kataShim",
+    "Version": "kata-shim version 1.10.0-alpha1-54f93db",
+    "Path": "/usr/libexec/kata-containers/kata-shim",
+    "Debug": false
+  },
+  "Agent": {
+    "Type": "kata",
+    "Debug": false,
+    "Trace": false,
+    "TraceMode": "",
+    "TraceType": ""
+  },
+  "Host": {
+    "Kernel": "5.0.0-1027-azure",
+    "Architecture": "amd64",
+    "Distro": {
+      "Name": "Ubuntu",
+      "Version": "18.04"
+    },
+    "CPU": {
+      "Vendor": "GenuineIntel",
+      "Model": "Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz"
+    },
+    "VMContainerCapable": true,
+    "SupportVSocks": true
+  },
+  "Netmon": {
+    "Version": "kata-netmon version 1.10.0-alpha1",
+    "Path": "/usr/libexec/kata-containers/kata-netmon",
+    "Debug": false,
+    "Enable": false
+  }
+},
+"boot-times-nonet" : {
+	"Results": [
+			{
+		"total": {
+			"Result": 6.847,
+			"Units" : "s"
+		},
+		"to-workload": {
+			"Result": 2.750,
+			"Units" : "s"
+		},
+		"in-kernel": {
+			"Result": 0.336917,
+			"Units" : "s"
+		},
+		"to-kernel": {
+			"Result": 2.413083,
+			"Units" : "s"
+		},
+		"to-quit": {
+			"Result": 4.097,
+			"Units" : "s"
+		}
+	},
+	{
+		"total": {
+			"Result": 6.625,
+			"Units" : "s"
+		},
+		"to-workload": {
+			"Result": 2.873,
+			"Units" : "s"
+		},
+		"in-kernel": {
+			"Result": 0.343933,
+			"Units" : "s"
+		},
+		"to-kernel": {
+			"Result": 2.529067,
+			"Units" : "s"
+		},
+		"to-quit": {
+			"Result": 3.752,
+			"Units" : "s"
+		}
+	},
+	{
+		"total": {
+			"Result": 6.534,
+			"Units" : "s"
+		},
+		"to-workload": {
+			"Result": 2.217,
+			"Units" : "s"
+		},
+		"in-kernel": {
+			"Result": 0.339936,
+			"Units" : "s"
+		},
+		"to-kernel": {
+			"Result": 1.877064,
+			"Units" : "s"
+		},
+		"to-quit": {
+			"Result": 4.317,
+			"Units" : "s"
+		}
+	},
+	{
+		"total": {
+			"Result": 6.412,
+			"Units" : "s"
+		},
+		"to-workload": {
+			"Result": 2.649,
+			"Units" : "s"
+		},
+		"in-kernel": {
+			"Result": 0.353477,
+			"Units" : "s"
+		},
+		"to-kernel": {
+			"Result": 2.295523,
+			"Units" : "s"
+		},
+		"to-quit": {
+			"Result": 3.762,
+			"Units" : "s"
+		}
+	},
+	{
+		"total": {
+			"Result": 6.515,
+			"Units" : "s"
+		},
+		"to-workload": {
+			"Result": 2.206,
+			"Units" : "s"
+		},
+		"in-kernel": {
+			"Result": 0.360800,
+			"Units" : "s"
+		},
+		"to-kernel": {
+			"Result": 1.845200,
+			"Units" : "s"
+		},
+		"to-quit": {
+			"Result": 4.309,
+			"Units" : "s"
+		}
+	},
+	{
+		"total": {
+			"Result": 6.571,
+			"Units" : "s"
+		},
+		"to-workload": {
+			"Result": 2.660,
+			"Units" : "s"
+		},
+		"in-kernel": {
+			"Result": 0.355028,
+			"Units" : "s"
+		},
+		"to-kernel": {
+			"Result": 2.304972,
+			"Units" : "s"
+		},
+		"to-quit": {
+			"Result": 3.911,
+			"Units" : "s"
+		}
+	},
+	{
+		"total": {
+			"Result": 6.614,
+			"Units" : "s"
+		},
+		"to-workload": {
+			"Result": 3.057,
+			"Units" : "s"
+		},
+		"in-kernel": {
+			"Result": 0.350466,
+			"Units" : "s"
+		},
+		"to-kernel": {
+			"Result": 2.706534,
+			"Units" : "s"
+		},
+		"to-quit": {
+			"Result": 3.556,
+			"Units" : "s"
+		}
+	},
+	{
+		"total": {
+			"Result": 6.573,
+			"Units" : "s"
+		},
+		"to-workload": {
+			"Result": 2.411,
+			"Units" : "s"
+		},
+		"in-kernel": {
+			"Result": 0.369052,
+			"Units" : "s"
+		},
+		"to-kernel": {
+			"Result": 2.041948,
+			"Units" : "s"
+		},
+		"to-quit": {
+			"Result": 4.162,
+			"Units" : "s"
+		}
+	},
+	{
+		"total": {
+			"Result": 6.604,
+			"Units" : "s"
+		},
+		"to-workload": {
+			"Result": 2.807,
+			"Units" : "s"
+		},
+		"in-kernel": {
+			"Result": 0.377347,
+			"Units" : "s"
+		},
+		"to-kernel": {
+			"Result": 2.429653,
+			"Units" : "s"
+		},
+		"to-quit": {
+			"Result": 3.797,
+			"Units" : "s"
+		}
+	},
+	{
+		"total": {
+			"Result": 6.718,
+			"Units" : "s"
+		},
+		"to-workload": {
+			"Result": 3.170,
+			"Units" : "s"
+		},
+		"in-kernel": {
+			"Result": 0.380672,
+			"Units" : "s"
+		},
+		"to-kernel": {
+			"Result": 2.789328,
+			"Units" : "s"
+		},
+		"to-quit": {
+			"Result": 3.547,
+			"Units" : "s"
+		}
+	}
+	]
+	}
+}

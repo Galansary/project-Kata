@@ -1,0 +1,164 @@
+{
+	"@timestamp" : 1576177367273,
+	"env" : {
+		"RuntimeVersion": "1.10.0-alpha1",
+		"RuntimeCommit": "",
+		"RuntimeConfig": "/usr/share/defaults/kata-containers/configuration.toml",
+		"Hypervisor": "/usr/bin/qemu-vanilla-system-x86_64",
+		"HypervisorVersion": "  QEMU emulator version 4.1.0\nCopyright (c) 2003-2019 Fabrice Bellard and the QEMU Project developers",
+		"Proxy": "/usr/libexec/kata-containers/kata-proxy",
+		"ProxyVersion": "1.10.0-alpha1-3b405f7",
+		"Shim": "/usr/libexec/kata-containers/kata-shim",
+		"ShimVersion": "  kata-shim version 1.10.0-alpha1-54f93db",
+		"machinename": "Ubuntu-Kata"
+	},
+	"date" : {
+		"ns": 1576177367283620695,
+		"Date": "2019-12-12T19:02:47.292"
+	},
+	"test" : {
+		"runtime": "kata-runtime",
+		"testname": "memory footprint"
+	},
+	"kata-env" :
+	{
+  "Meta": {
+    "Version": "1.0.23"
+  },
+  "Runtime": {
+    "Version": {
+      "Semver": "1.10.0-alpha1",
+      "Commit": "",
+      "OCI": "1.0.1-dev"
+    },
+    "Config": {
+      "Path": "/usr/share/defaults/kata-containers/configuration.toml"
+    },
+    "Debug": false,
+    "Trace": false,
+    "DisableGuestSeccomp": true,
+    "DisableNewNetNs": false,
+    "SandboxCgroupOnly": false,
+    "Experimental": null,
+    "Path": "/usr/bin/kata-runtime"
+  },
+  "Hypervisor": {
+    "MachineType": "pc",
+    "Version": "QEMU emulator version 4.1.0\nCopyright (c) 2003-2019 Fabrice Bellard and the QEMU Project developers",
+    "Path": "/usr/bin/qemu-vanilla-system-x86_64",
+    "BlockDeviceDriver": "virtio-scsi",
+    "EntropySource": "/dev/urandom",
+    "Msize9p": 8192,
+    "MemorySlots": 10,
+    "Debug": false,
+    "UseVSock": false,
+    "SharedFS": "virtio-9p"
+  },
+  "Image": {
+    "Path": "/usr/share/kata-containers/kata-containers-image_clearlinux_1.10.0-alpha1_agent_c87f497312.img"
+  },
+  "Kernel": {
+    "Path": "/usr/share/kata-containers/vmlinuz-4.19.75.55-44.container",
+    "Parameters": "systemd.unit=kata-containers.target systemd.mask=systemd-networkd.service systemd.mask=systemd-networkd.socket"
+  },
+  "Initrd": {
+    "Path": ""
+  },
+  "Proxy": {
+    "Type": "kataProxy",
+    "Version": "kata-proxy version 1.10.0-alpha1-3b405f7",
+    "Path": "/usr/libexec/kata-containers/kata-proxy",
+    "Debug": false
+  },
+  "Shim": {
+    "Type": "kataShim",
+    "Version": "kata-shim version 1.10.0-alpha1-54f93db",
+    "Path": "/usr/libexec/kata-containers/kata-shim",
+    "Debug": false
+  },
+  "Agent": {
+    "Type": "kata",
+    "Debug": false,
+    "Trace": false,
+    "TraceMode": "",
+    "TraceType": ""
+  },
+  "Host": {
+    "Kernel": "5.0.0-1027-azure",
+    "Architecture": "amd64",
+    "Distro": {
+      "Name": "Ubuntu",
+      "Version": "18.04"
+    },
+    "CPU": {
+      "Vendor": "GenuineIntel",
+      "Model": "Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz"
+    },
+    "VMContainerCapable": true,
+    "SupportVSocks": true
+  },
+  "Netmon": {
+    "Version": "kata-netmon version 1.10.0-alpha1",
+    "Path": "/usr/libexec/kata-containers/kata-netmon",
+    "Debug": false,
+    "Enable": false
+  }
+},
+"memory-footprint" : {
+	"Config": [
+			{
+		"containers": 4,
+		"ksm": 0,
+		"auto": "",
+		"waittime": 5,
+		"image": "busybox",
+		"command": "sh"
+	}
+	],
+	"Results": [
+			{
+		"average": {
+			"Result": 147282.18,
+			"Units" : "KB"
+		},
+		"qemus": {
+			"Result": 129538.25,
+			"Units" : "KB"
+		},
+		"shims": {
+			"Result": 15639.25,
+			"Units" : "KB"
+		},
+		"proxys": {
+			"Result": 2104.68,
+			"Units" : "KB"
+		}
+	}
+	],
+	"Raw results": [
+			{
+		"qemu-vanilla-system-x86_64 memory": [
+			128866,
+			129091,
+			129235,
+			130961
+			
+		],
+		"kata-shim memory": [
+			15093,
+			15149,
+			15177,
+			17138
+			
+		],
+		"kata-proxy memory": [
+			6382,
+			8414,
+			8437,
+			10442
+			
+		]
+	}
+	]
+	}
+}
